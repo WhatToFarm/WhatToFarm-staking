@@ -1,0 +1,1065 @@
+{
+	"compiler": {
+		"version": "0.8.9+commit.e5eed63a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "stakeName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "amount",
+						"type": "uint128"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "stakeName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "reward",
+						"type": "uint128"
+					}
+				],
+				"name": "RewardHarvested",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "stakeName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "amount",
+						"type": "uint128"
+					}
+				],
+				"name": "Withdraw",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "stakeName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "availableToRequest",
+						"type": "uint128"
+					}
+				],
+				"name": "WithdrawRequested",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "_active",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "_special",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint64",
+						"name": "_lockUpPeriod",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint64",
+						"name": "_leavingLockUpPeriod",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint64",
+						"name": "_monthlyEmission",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint128",
+						"name": "_minStakingAmount",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint128",
+						"name": "_minWithdrawalAmount",
+						"type": "uint128"
+					}
+				],
+				"name": "createNewStake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "_amount",
+						"type": "uint128"
+					}
+				],
+				"name": "enterStaking",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "harvestReward",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IBEP20",
+						"name": "_stakingToken",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_rewardPool",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "leaveStaking",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "pendingReward",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "_amount",
+						"type": "uint128"
+					}
+				],
+				"name": "requestLeaving",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "rewardPool",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_users",
+						"type": "address[]"
+					},
+					{
+						"internalType": "bool[]",
+						"name": "_set",
+						"type": "bool[]"
+					}
+				],
+				"name": "setProductsUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newPool",
+						"type": "address"
+					}
+				],
+				"name": "setRewardPool",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stakingToken",
+				"outputs": [
+					{
+						"internalType": "contract IBEP20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "_active",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "_special",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint64",
+						"name": "_lockUpPeriod",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint64",
+						"name": "_leavingLockUpPeriod",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint64",
+						"name": "_monthlyEmission",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint128",
+						"name": "_minStakingAmount",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint128",
+						"name": "_minWithdrawalAmount",
+						"type": "uint128"
+					}
+				],
+				"name": "updateStake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewAmountSum",
+				"outputs": [
+					{
+						"internalType": "uint128[]",
+						"name": "",
+						"type": "uint128[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewDepositsTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint64[]",
+						"name": "",
+						"type": "uint64[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewEmissionTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint64[]",
+						"name": "",
+						"type": "uint64[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewMonthlyEmission",
+				"outputs": [
+					{
+						"internalType": "uint64[]",
+						"name": "",
+						"type": "uint64[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewPosition",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "totalAmount",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "activeAmount",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint64",
+								"name": "lastWithdrawalIndex",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint64",
+								"name": "lastAvailableToRequestIndex",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint128",
+								"name": "requestedAmount",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "withdrawalAmount",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "receivedReward",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "savedReward",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint64",
+								"name": "lastUpdateTimestamp",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint64[]",
+								"name": "depositsTimestamp",
+								"type": "uint64[]"
+							},
+							{
+								"internalType": "uint128[]",
+								"name": "amountSum",
+								"type": "uint128[]"
+							},
+							{
+								"internalType": "uint64[]",
+								"name": "requestsTimestamp",
+								"type": "uint64[]"
+							},
+							{
+								"internalType": "uint128[]",
+								"name": "withdrawalSum",
+								"type": "uint128[]"
+							}
+						],
+						"internalType": "struct Staking.PositionInfo",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "viewProductsUser",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewRequestsTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint64[]",
+						"name": "",
+						"type": "uint64[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewStake",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint64",
+								"name": "lockUpPeriod",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint64",
+								"name": "leavingLockUpPeriod",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint64[]",
+								"name": "monthlyEmission",
+								"type": "uint64[]"
+							},
+							{
+								"internalType": "uint64[]",
+								"name": "emissionTimestamp",
+								"type": "uint64[]"
+							},
+							{
+								"internalType": "uint128",
+								"name": "minStakingAmount",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "minWithdrawalAmount",
+								"type": "uint128"
+							},
+							{
+								"internalType": "bool",
+								"name": "exist",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "active",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "special",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct Staking.StakeInfo",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_stakeName",
+						"type": "string"
+					}
+				],
+				"name": "viewWithdrawalSum",
+				"outputs": [
+					{
+						"internalType": "uint128[]",
+						"name": "",
+						"type": "uint128[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Designed to work with ERC1967Proxy",
+			"kind": "dev",
+			"methods": {
+				"createNewStake(string,bool,bool,uint64,uint64,uint64,uint128,uint128)": {
+					"details": "Creates a new Stake. Only for owner of the contract.",
+					"params": {
+						"_active": "To lock and unlock Stake.",
+						"_leavingLockUpPeriod": "Additional Lock Up Period for user since Stake withdraw requested.",
+						"_lockUpPeriod": "Lock Up Period for user since enter the Stake.",
+						"_minStakingAmount": "Minimal amount to stake.",
+						"_minWithdrawalAmount": "Minimal amount to withdraw.",
+						"_monthlyEmission": "Reward per token per month in 0.01%.",
+						"_special": "Availability for products users.",
+						"_stakeName": "The name of the Stake."
+					}
+				},
+				"enterStaking(string,uint128)": {
+					"details": "Make new deposit in given Stake for a user.",
+					"params": {
+						"_amount": "How many tokens we stake.",
+						"_stakeName": "The name of the Stake."
+					}
+				},
+				"harvestReward(string)": {
+					"details": "Take all available reward for a user.",
+					"params": {
+						"_stakeName": "The name of the Stake."
+					}
+				},
+				"initialize(address,address)": {
+					"details": "For ERC1967 proxy we need to replace constructor with initialize function. Sets staking token, reward pool and an owner of the contract.",
+					"params": {
+						"_rewardPool": "Address of a wallet from which we take reward tokens.",
+						"_stakingToken": "Address of IBEP20 token contract for staking."
+					}
+				},
+				"leaveStaking(string)": {
+					"details": "Withdraw all requested tokens from staking.",
+					"params": {
+						"_stakeName": "The name of the Stake."
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"pendingReward(address,string)": {
+					"details": "In sum with savedReward becomes total pending reward of a user.",
+					"params": {
+						"_stakeName": "The name of the Stake.",
+						"_user": "The address of a position user."
+					},
+					"returns": {
+						"_0": "The amount of pending reward tokens since the last position update."
+					}
+				},
+				"requestLeaving(string,uint128)": {
+					"details": "Request leaving from stake, requires Leaving Lock Up Period to wait before actual leaving.",
+					"params": {
+						"_amount": "How many tokens we want to withdraw.",
+						"_stakeName": "The name of the Stake."
+					}
+				},
+				"setProductsUser(address[],bool[])": {
+					"details": "Mark users of products as available for special stakes. Only for owner of the contract.",
+					"params": {
+						"_set": "The array of new settings.",
+						"_users": "The array of users to change their status."
+					}
+				},
+				"setRewardPool(address)": {
+					"details": "Change the reward pool. Only for owner of the contract.",
+					"params": {
+						"_newPool": "The address of a new reward pool."
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"updateStake(string,bool,bool,uint64,uint64,uint64,uint128,uint128)": {
+					"details": "Update existing Stake. Only for owner of the contract.",
+					"params": {
+						"_active": "To lock and unlock Stake.",
+						"_leavingLockUpPeriod": "Additional Lock Up Period for user since Stake withdraw requested.",
+						"_lockUpPeriod": "Lock Up Period for user since enter the Stake.",
+						"_minStakingAmount": "Minimal amount to stake.",
+						"_minWithdrawalAmount": "Minimal amount to withdraw.",
+						"_monthlyEmission": "Reward per token per month in 0.01%.",
+						"_special": "Availability for products users.",
+						"_stakeName": "The name of the Stake."
+					}
+				},
+				"viewAmountSum(address,string)": {
+					"details": "Show sums of all deposits of the position. Not available directly from position struct.",
+					"params": {
+						"_stakeName": "The name of the Stake.",
+						"_user": "The address of a position user."
+					},
+					"returns": {
+						"_0": "The array of sums of all deposits of the position."
+					}
+				},
+				"viewDepositsTimestamp(address,string)": {
+					"details": "Show deposits timestamps array of the position. Not available directly from position struct.",
+					"params": {
+						"_stakeName": "The name of the Stake.",
+						"_user": "The address of a position user."
+					},
+					"returns": {
+						"_0": "The deposits timestamps array of the position."
+					}
+				},
+				"viewEmissionTimestamp(string)": {
+					"details": "Show emission timestamps array of the stake. Not available directly from stake struct.",
+					"params": {
+						"_stakeName": "The name of the Stake."
+					},
+					"returns": {
+						"_0": "The emissions timestamps array of the stake."
+					}
+				},
+				"viewMonthlyEmission(string)": {
+					"details": "Show monthly emissions array of the stake. Not available directly from stake struct.",
+					"params": {
+						"_stakeName": "The name of the Stake."
+					},
+					"returns": {
+						"_0": "The monthly emissions array of the stake."
+					}
+				},
+				"viewPosition(address,string)": {
+					"details": "Show position info of a user.",
+					"params": {
+						"_stakeName": "The name of the Stake.",
+						"_user": "The address of a position user."
+					},
+					"returns": {
+						"_0": "The position struct."
+					}
+				},
+				"viewProductsUser(address)": {
+					"details": "Show if a user can get an access to a special stakes.",
+					"params": {
+						"_user": "The address of a user."
+					},
+					"returns": {
+						"_0": "Accessibility."
+					}
+				},
+				"viewRequestsTimestamp(address,string)": {
+					"details": "Show deposits timestamps array of the position. Not available directly from position struct.",
+					"params": {
+						"_stakeName": "The name of the Stake.",
+						"_user": "The address of a position user."
+					},
+					"returns": {
+						"_0": "The deposits timestamps array of the position."
+					}
+				},
+				"viewStake(string)": {
+					"details": "Show stake info.",
+					"params": {
+						"_stakeName": "The name of the Stake."
+					},
+					"returns": {
+						"_0": "The stake struct."
+					}
+				},
+				"viewWithdrawalSum(address,string)": {
+					"details": "Show sums of all available to withdraw tokens of the position. Not available directly from position struct.",
+					"params": {
+						"_stakeName": "The name of the Stake.",
+						"_user": "The address of a position user."
+					},
+					"returns": {
+						"_0": "The array of sums of all available to withdraw tokens of the position."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createNewStake(string,bool,bool,uint64,uint64,uint64,uint128,uint128)": {
+					"notice": "Creates a new Stake."
+				},
+				"enterStaking(string,uint128)": {
+					"notice": "Stake tokens."
+				},
+				"harvestReward(string)": {
+					"notice": "Take all available reward."
+				},
+				"initialize(address,address)": {
+					"notice": "Initilize the contract to start work with it."
+				},
+				"leaveStaking(string)": {
+					"notice": "Withdraw all requested tokens from staking."
+				},
+				"pendingReward(address,string)": {
+					"notice": "View function to see pending reward tokens since the last position update."
+				},
+				"requestLeaving(string,uint128)": {
+					"notice": "Request leaving from stake, requires Leaving Lock Up Period to wait before actual leaving."
+				},
+				"setProductsUser(address[],bool[])": {
+					"notice": "Mark users of products as available for special stakes."
+				},
+				"setRewardPool(address)": {
+					"notice": "Change the reward pool."
+				},
+				"updateStake(string,bool,bool,uint64,uint64,uint64,uint128,uint128)": {
+					"notice": "Update existing Stake."
+				},
+				"viewAmountSum(address,string)": {
+					"notice": "Show sums of all deposits of the position."
+				},
+				"viewDepositsTimestamp(address,string)": {
+					"notice": "Show deposits timestamps array of the position."
+				},
+				"viewEmissionTimestamp(string)": {
+					"notice": "Show emission timestamps array of the stake."
+				},
+				"viewMonthlyEmission(string)": {
+					"notice": "Show monthly emissions array of the stake."
+				},
+				"viewPosition(address,string)": {
+					"notice": "Show position info of a user."
+				},
+				"viewProductsUser(address)": {
+					"notice": "Show if a user can get an access to a special stakes."
+				},
+				"viewRequestsTimestamp(address,string)": {
+					"notice": "Show deposits timestamps array of the position."
+				},
+				"viewStake(string)": {
+					"notice": "Show stake info."
+				},
+				"viewWithdrawalSum(address,string)": {
+					"notice": "Show sums of all available to withdraw tokens of the position."
+				}
+			},
+			"notice": "Implements staking process for IBEP20 token",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Staking.sol": "Staking"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/GSN/Context.sol": {
+			"keccak256": "0xf1a3b19ae81af9cb0d839d1f55f83662028e38020bb31caa26dd023c84d47dcd",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://4549d8ed2b3b265e8938fa329cdbb5ce9d89d5011fee7786fcc7f68cc3192751",
+				"dweb:/ipfs/QmZUwMEYFUzsQ6AABMzbWjCQXZbFXRDAbf5CYCRiee5FLA"
+			]
+		},
+		"contracts/Staking.sol": {
+			"keccak256": "0x16b847f80d389baaaa74f5d875ea2bb01683e3e80543f7a254286340e27166e3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d6e6ab9d21588a39ccd412bcab140248aacd7cae02b651ac0e2fed2671d3c830",
+				"dweb:/ipfs/QmXe1MJDkD1QuCSRAreGYwJazu5VUFQTko6LcV7zQqLrhc"
+			]
+		},
+		"contracts/access/OwnableInitializable.sol": {
+			"keccak256": "0xcbaec2e1d742f84afdd134740639e2dc1708caff84fc9e6f6ae5fa4c95548933",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://00cfdabe7f9eaf2a448144dc3ebdac5b4b558a5ba6bddb50eae0acf39d72ce30",
+				"dweb:/ipfs/QmY3ocsQ4Wp9fUMo3cXu7vZxBZP973GKixQ49Zj2x31yvm"
+			]
+		},
+		"contracts/math/SafeMath.sol": {
+			"keccak256": "0x4ad7b125cb4a096946dbc708a7cafb9f2bffe9772ac12d30f06593860bdda528",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f0464659eff7947834a4a3e5fc0b199ca904a24a8ca8d5a2b8869f0f19798c36",
+				"dweb:/ipfs/QmSzFiVyuQciuZ1igof2WQng1Hw7RBRTKXbdov1VmRRdmH"
+			]
+		},
+		"contracts/math/SafeMath128.sol": {
+			"keccak256": "0xd2cb061069efdccfd7217dbd35205aaaeede2d15cf17bb392ccf88764bb0e45a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4c8cacc60db6f8b35259ae509a9dc3baa67b0bc8498e9c01f9adad761c3ad61f",
+				"dweb:/ipfs/QmNdXgTtktsWzJ727HGBqaPsUS4TtSRmXwUzHyNV2ypR7D"
+			]
+		},
+		"contracts/math/SafeMath64.sol": {
+			"keccak256": "0x8ad27e723650bfa31bca4c9754063340f355a0a40129e8ef8112b5459d2d8e1c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ac027881b1c985b84ad09d1572d19237bb52470823223f11c96c8095a48a9465",
+				"dweb:/ipfs/QmWi2fwAz1eC6NBGZUPXbBjbcnUytEsp5H2Siu82AqLLp8"
+			]
+		},
+		"contracts/token/BEP20/IBEP20.sol": {
+			"keccak256": "0x089e630fc1570f26de7a36951138dc4f7c5eeff7963e164506f2d31969642eb8",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://2344ef38d395a7ea19c8389356f7da3eacfd6d113e40ee588a067511033a7059",
+				"dweb:/ipfs/QmSfsK71oqQ5sJBjXzHnRNMAXbPJ4FAwXwTpARbzrBywMg"
+			]
+		},
+		"contracts/token/BEP20/SafeBEP20.sol": {
+			"keccak256": "0x67034359e79394e7dfde94f2a50ab9b363136e32fb35e10ab2752eda4d1e427e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://90f69370d88b610ffccd12ab3c3f9023b516193656b62bc3723f1602d7407516",
+				"dweb:/ipfs/QmUXE9pv8TXh3GwDktZBvNN7Z8udPeuWLxzCtiXHsyLoU9"
+			]
+		},
+		"contracts/utils/Address.sol": {
+			"keccak256": "0x3336baae5cf23e94274d75336e2d412193be508504aee185e61dc7d58cd05c8a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://39a05eec7083dfa0cc7e0cbfe6cd1bd085a340af1ede93fdff3ad047c5fb3d8e",
+				"dweb:/ipfs/QmVApz5fCUq2QC8gKTsNNdCmcedJ3ETHp68zR5N3WUKS4r"
+			]
+		},
+		"contracts/utils/Initializable.sol": {
+			"keccak256": "0x8b2abd85d0ece7e866e100e9d47ca9cbec93c87cf71a8d267b2b93eb81f7d5e9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fe9fa1beb63e4a09637701f783982ba80380d630d600c9cafe26b68bf58be1b2",
+				"dweb:/ipfs/QmRA3GXhTWys88joD9x8xYhdjzvGwmDGLMMzGw3LxbSEge"
+			]
+		}
+	},
+	"version": 1
+}
